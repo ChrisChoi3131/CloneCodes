@@ -1,0 +1,90 @@
+body{
+  background-image: url("/img/background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-size: 2em;
+  font-weight: bold;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 800px;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.buttonContainer{
+  margin-top: 10px;
+  height: 60px;
+  width: 60px;
+}
+.button{
+  border: 3px solid;
+  border-radius : 10px;
+  background-color: bisque;
+  height: 100%;
+  width: 100%;
+  cursor:pointer; 
+}
+.bug:hover{
+  outline: auto;
+}
+.carrot:hover{
+  outline: auto;
+}
+.modal{
+  display: none; /* Hidden by default */
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
+}
+.modalContent{
+  display: inherit;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 500px;
+  height: 200px;
+  color: white;
+  opacity: 30%;
+  border-radius: 4px;
+}
+.timer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  background-color: white;
+  height: 50px;
+  width: 200px;
+  border: 3px solid;
+  border-radius : 10px;
+}
+.scoreBoard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  background-color: sandybrown;
+  height: 50px;
+  width: 50px;
+  border: 3px solid;
+  border-radius : 100%
+}
+
+.playGround{
+  height: 400px;
+  width: 100%;
+}
