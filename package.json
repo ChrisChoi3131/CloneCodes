@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -12,9 +12,13 @@
     "eslint": "^7.26.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-standard": "^5.0.0",
+    "jest": "^27.0.4",
     "prettier": "^2.3.0"
   },
   "dependencies": {
-    "@mdi/font": "^5.9.55"
+    "@mdi/font": "^5.9.55",
+    "i": "^0.3.6",
+    "mongodb": "^3.6.6",
+    "npm": "^7.20.5"
   }
 }
