@@ -20,7 +20,6 @@ app.use(session({
   secret: 'foo',
   store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/dwitter' })
 }));
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/tweets", routerTweets);
 app.use("/users", routerUsers);
