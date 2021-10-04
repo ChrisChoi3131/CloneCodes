@@ -6,6 +6,6 @@ const port = 3000;
 
 app.listen(port, () => {
   console.info(
-    "Server start"
+    "✅ Server start"
   )
 });
