@@ -1,6 +1,6 @@
 import express from "express";
 import logger from "morgan";
-import globalRouter from "./routes/globalRouter";
+import globalRouter from "./routes/rootRouter";
 import userRouter from "./routes/userRouter";
 import videoRouter from "./routes/videoRouter";
 
