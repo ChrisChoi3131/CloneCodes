@@ -1,6 +1,6 @@
 import User from "../models/Users"
 export const getJoin = (req, res) => {
-  res.render("join", { pageTitle: "Create Account" });
+  res.render("join", { pageTitle: "Create Account", user: [] });
 }
 export const postJoin = async (req, res) => {
   try {
