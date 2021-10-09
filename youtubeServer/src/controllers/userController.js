@@ -3,9 +3,21 @@ export const getJoin = (req, res) => {
   res.render("join", { pageTitle: "Create Account" });
 }
 export const postJoin = async (req, res) => {
-  const { email, username, password, name, location } = req.body;
-  await User.create({email,username,password,name,location});
-  res.redirect("/login")
+  try {
+    const user = req.body
+    const { email, username, password, confirmPwd, name, location } = user;
+    const exists = await User.exists({ $or: [{ email, username }] });
+    if (password !== confirmPwd) {
+      return res.render("join", { pageTitle: "Create Account", errorMessage: "패스워드 다름", user });
+    }
+    if (exists) {
+      return res.render("join", { pageTitle: "Create Account", errorMessage: "중복", user });
+    }
+    await User.create({ email, username, password, name, location });
+    res.redirect("/login")
+  } catch (error) {
+    return res.render("join", { pageTitle: "Create Account", errorMessage: error });
+  }
 }
 export const edit = (req, res) => res.send("edit user");
 export const remove = (req, res) => res.send("remove User");
