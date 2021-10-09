@@ -8,13 +8,13 @@ export const homeVideo = async (req, res) => {
 export const watchVideo = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
-  if (!video) return res.render("404", { pageTitle: "Video not found" });
+  if (!video) return res.status(404).render({ pageTitle: "Video not found" });
   res.render("watch", { pageTitle: `Watching ${video.title}`, video });
 }
 export const getEditVideo = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
-  if (!video) return res.render("404", { pageTitle: "Video not found" });
+  if (!video) return res.status(404).render({ pageTitle: "Video not found" });
   res.render("edit", { pageTitle: "Edit", video })
 };
 

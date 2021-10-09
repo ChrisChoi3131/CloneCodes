@@ -8,10 +8,10 @@ export const postJoin = async (req, res) => {
     const { email, username, password, confirmPwd, name, location } = user;
     const exists = await User.exists({ $or: [{ email, username }] });
     if (password !== confirmPwd) {
-      return res.render("join", { pageTitle: "Create Account", errorMessage: "패스워드 다름", user });
+      return res.status(400).render("join", { pageTitle: "Create Account", errorMessage: "패스워드 다름", user });
     }
     if (exists) {
-      return res.render("join", { pageTitle: "Create Account", errorMessage: "중복", user });
+      return res.status(400).render("join", { pageTitle: "Create Account", errorMessage: "중복", user });
     }
     await User.create({ email, username, password, name, location });
     res.redirect("/login")
