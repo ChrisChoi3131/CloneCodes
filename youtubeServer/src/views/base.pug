@@ -15,8 +15,15 @@ html(lang='en')
             a(href="/videos/upload") Upload Video
           li
             a(href="/videos/search") Search Video
-          li
-            a(href="/join") Join
-    main
+          if loggedIn
+              li
+                  a(href="/logout")  Log Out
+              li
+                  a(href="/my-profile") #{loggedInUser.name}의 Profile
+          else
+              li
+                  a(href="/join")  Join
+              li
+                  a(href="/login")  Login    
       block content
     include partials/footer.pug
