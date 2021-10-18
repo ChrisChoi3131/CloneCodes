@@ -5,6 +5,7 @@ block content
     input(type="text" name="username" required placeholder="username" value=(user.username) ? `${user.username}` : "")
     input(type="password" name="password" required placeholder="password")
     input(type="submit" value="login")
+    a(href="/users/github/login") Continue with Github &rarr;
   hr
   div 
       span Don't have an account? 

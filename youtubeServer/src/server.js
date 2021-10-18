@@ -11,6 +11,8 @@ const app = express();
 const sess = {
   secret: 'keyboard cat',
   cookie: {},
+  resave: false,
+  saveUninitialized: false,  
   store: MongoStore.create({ mongoUrl: process.env.DB_URL})
 }
 app.use(session(sess));
