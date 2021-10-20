@@ -111,5 +111,8 @@ export const postLogin = async (req, res) => {
   }
 }
 
-export const edit = (req, res) => res.send("edit user");
+export const getEdit = (req, res) => {
+  res.render("edit-profile", {pageTitle : "Edit Profile"})
+}
+export const postEdit = (req, res) => res.send("edit user");
 export const remove = (req, res) => res.send("remove User");

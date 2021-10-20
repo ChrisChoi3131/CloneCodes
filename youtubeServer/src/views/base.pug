@@ -16,14 +16,16 @@ html(lang='en')
           li
             a(href="/videos/search") Search Video
           if loggedIn
-              li
-                  a(href="/logout")  Log Out
-              li
-                  a(href="/my-profile") #{loggedInUser.name}의 Profile
+            li
+              a(href="/users/edit")  Edit-profile          
+            li
+              a(href="/logout")  Log Out
+            li
+              a(href="/my-profile") #{loggedInUser.name}의 Profile
           else
-              li
-                  a(href="/join")  Join
-              li
-                  a(href="/login")  Login    
+            li
+              a(href="/join")  Join
+            li
+              a(href="/login")  Login    
       block content
     include partials/footer.pug

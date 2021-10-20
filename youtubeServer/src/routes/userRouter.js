@@ -1,9 +1,10 @@
 import express from "express";
-import {edit, remove,callbackGithub,loginGithub } from "../controllers/userController";
+import { getEdit, postEdit, remove, callbackGithub, loginGithub } from "../controllers/userController";
 
 const userRouter = express.Router();
 
-userRouter.get("/edit", edit);
+userRouter.route("/edit").get(getEdit).post(postEdit);
+
 userRouter.get("/github/login", loginGithub);
 userRouter.get("/github/callback", callbackGithub);
 userRouter.get("/remove", remove);
