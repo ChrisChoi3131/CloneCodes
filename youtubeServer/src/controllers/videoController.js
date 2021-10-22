@@ -57,5 +57,5 @@ export const getSearchVideo = async (req, res) => {
       }
     })
   }
-  res.render("search", { pageTitle: "Search Video", videos , keyword});
+  res.render("search", { pageTitle: "Search Video", videos , keyword : keyword || ""});
 }
