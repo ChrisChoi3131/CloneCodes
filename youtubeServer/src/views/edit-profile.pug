@@ -1,3 +1,5 @@
+
+
 extends base.pug
 
 block content
@@ -7,4 +9,7 @@ block content
     input(type="text" name="email" required placeholder="email" value=(loggedInUser.email) ? `${loggedInUser.email}` : "")
     input(type="text" name="name" required placeholder="name" value=(loggedInUser.name) ? `${loggedInUser.name}` : "")
     input(type="text" name="location" placeholder="location" value=(loggedInUser.location) ? `${loggedInUser.location}` : "")
-    input(type="submit")  
+    input(type="submit")     
+    if !loggedInUser.socialOnly
+      hr
+      a(href="change-password") Change password &rarr;       

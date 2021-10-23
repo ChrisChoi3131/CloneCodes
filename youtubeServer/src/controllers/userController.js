@@ -118,7 +118,7 @@ export const postEdit = async (req, res) => {
   const {
     session: {
       user: {
-        _id : id
+        _id: id
       }
     },
     body: {
@@ -126,9 +126,39 @@ export const postEdit = async (req, res) => {
     }
   } = req;
   const existUser = await User.findOne({ $or: [{ email, username }] });
-  if(existUser || existUser.id === id) return res.render("edit-profile", { pageTitle: "Login Account", errorMessage: "email/username is already token",});
+  if (existUser) {
+    return res.status(400).render("edit-profile", { pageTitle: "Login Account", errorMessage: "email/username is already token", });
+  }
+  if (existUser?.id !== id) return res.redirect("/");
   const updatedUser = await User.findByIdAndUpdate(id, { username, email, name, location }, { new: true });
   req.session.user = updatedUser;
   res.redirect("/users/edit");
 };
+
+export const getChangePassword = (req, res) => {
+  return res.render("users/change-password", { pageTitle: "Change password" })
+}
+export const postChangePassword = async (req, res) => {
+  const {
+    session: {
+      user: {
+        _id: id
+      }
+    },
+    body: {
+      currentPW, newPW, newPWConfirm
+    }
+  } = req;
+  if (newPW !== newPWConfirm) return res.status(400).render("users/change-password", { pageTitle: "Change password", errorMessage: "Check new password" })
+  const user = await User.findById(id);
+  const match = await bcrypt.compare(currentPW, user.password);
+  if (match) {
+    user.password = newPW;
+    await user.save();
+    return res.redirect("/logout");
+  } else {
+    return res.status(400).render("users/change-password", { pageTitle: "Change password", errorMessage: "Check Current password" });
+  }
+}
+
 export const remove = (req, res) => res.send("remove User");
