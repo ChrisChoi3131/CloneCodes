@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
 export const getLogout = (req, res) => {
   req.session.destroy();
   res.redirect("/");
-} 
+}
 export const loginGithub = (req, res) => {
   const baseURL = "https://github.com/login/oauth/authorize"
   const config = {
@@ -61,7 +61,7 @@ export const callbackGithub = async (req, res) => {
         socialOnly: true,
         location: userData.location,
       });
-    }else if (!dbUser?.socialOnly) res.render("login", {pageTitle : "Login Account", errorMessage : "Error : Login with Password", user: []});
+    } else if (!dbUser?.socialOnly) res.render("login", { pageTitle: "Login Account", errorMessage: "Error : Login with Password", user: [] });
     req.session.loggedIn = true;
     req.session.user = dbUser;
     return res.redirect("/");
@@ -112,7 +112,23 @@ export const postLogin = async (req, res) => {
 }
 
 export const getEdit = (req, res) => {
-  res.render("edit-profile", {pageTitle : "Edit Profile"})
+  res.render("edit-profile", { pageTitle: "Edit Profile" })
 }
-export const postEdit = (req, res) => res.send("edit user");
+export const postEdit = async (req, res) => {
+  const {
+    session: {
+      user: {
+        _id : id
+      }
+    },
+    body: {
+      username, email, name, location
+    }
+  } = req;
+  const existUser = await User.findOne({ $or: [{ email, username }] });
+  if(existUser || existUser.id === id) return res.render("edit-profile", { pageTitle: "Login Account", errorMessage: "email/username is already token",});
+  const updatedUser = await User.findByIdAndUpdate(id, { username, email, name, location }, { new: true });
+  req.session.user = updatedUser;
+  res.redirect("/users/edit");
+};
 export const remove = (req, res) => res.send("remove User");
