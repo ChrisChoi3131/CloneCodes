@@ -5,6 +5,8 @@ import globalRouter from "./routes/rootRouter";
 import userRouter from "./routes/userRouter";
 import videoRouter from "./routes/videoRouter";
 import { localsMiddleware } from "./middlewares";
+import path from "path";
+
 import MongoStore from 'connect-mongo'
 
 const app = express();
@@ -12,13 +14,14 @@ const sess = {
   secret: 'keyboard cat',
   cookie: {},
   resave: false,
-  saveUninitialized: false,  
-  store: MongoStore.create({ mongoUrl: process.env.DB_URL})
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: process.env.DB_URL })
 }
 app.use(session(sess));
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'));
 app.set("view engine", "pug");
-app.set("views", process.cwd()+"/src/views");
+app.set("views", process.cwd() + "/src/views");
 app.use(localsMiddleware);
 app.use(logger("dev"));
 app.use("/", globalRouter);

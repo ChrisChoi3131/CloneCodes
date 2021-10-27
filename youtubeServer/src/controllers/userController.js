@@ -1,6 +1,7 @@
 import User from "../models/Users"
 import bcrypt from "bcrypt";
 import fetch from 'node-fetch';
+import fs from "fs/promises"
 
 
 export const getLogout = (req, res) => {
@@ -118,19 +119,22 @@ export const postEdit = async (req, res) => {
   const {
     session: {
       user: {
-        _id: id
+        _id: id,
+        avatarUrl
       }
     },
     body: {
       username, email, name, location
-    }
+    },
+    file
   } = req;
   const existUser = await User.findOne({ $or: [{ email, username }] });
   if (existUser) {
+    await fs.unlink(file?.path);
     return res.status(400).render("edit-profile", { pageTitle: "Login Account", errorMessage: "email/username is already token", });
   }
-  if (existUser?.id !== id) return res.redirect("/");
-  const updatedUser = await User.findByIdAndUpdate(id, { username, email, name, location }, { new: true });
+  // if (existUser?.id !== id) return res.redirect("/");
+  const updatedUser = await User.findByIdAndUpdate(id, { username, email, name, location, avatarUrl : file ? `/${file.path}` : avatarUrl}, { new: true });
   req.session.user = updatedUser;
   res.redirect("/users/edit");
 };
