@@ -22,5 +22,4 @@ export const loggedInOnlyNavGuard = (req, res, next) =>{
     next();
   }
 }
-
 export const uploadFile = multer({dest : "uploads/"});
