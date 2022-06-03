@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "es6",
+    "outDir": "out",
+    "sourceMap": true,
+    "rootDir": "./src"
+  }
+}
