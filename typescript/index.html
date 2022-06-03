@@ -7,20 +7,21 @@
     <title>Notion copy</title>
     <script defer type="module" src="./out/index.js"></script>
     <script defer type="module" src="./out/loading/loading.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <nav>
-      <h1>Motion</h1>
-      <ul>
+    <nav id="nav" class="width-full position-fixed top-0 d-flex flex-column flex-justify-center flex-items-center">
+      <h1>Card Drag & Drop</h1>
+      <ul class="d-flex">
         <li>
-          <button>Image</button>
+          <button class="mr-2">Image</button>
         </li>
         <li>
-          <button>Video</button>
+          <button class="mr-2">Video</button>
         </li>
         <li>
-          <button>Note</button>
+          <button class="mr-2">Note</button>
         </li>
         <li>
           <button>Task</button>
@@ -28,6 +29,13 @@
       </ul>
     </nav>
     <section id="cards">d</section>
-    <footer id="footer"></footer>
+    <footer id="footer" class="width-full position-fixed bottom-0 d-flex flex-justify-center flex-items-center">
+      <h3>
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        &copy; Copyright by Yongrak Choi. All right reserved
+      </h3>
+    </footer>
   </body>
 </html>

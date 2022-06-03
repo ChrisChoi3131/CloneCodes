@@ -1,4 +1,9 @@
 @import url(default.css);
+@import url(layout.css);
+@import url(margin.css);
+@import url(padding.css);
+@import url(flexbox.css);
+@import url(default.css);
 @import url(contents/nav.css);
 @import url(contents/cards.css);
 @import url(contents/footer.css);
