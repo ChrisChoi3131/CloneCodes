@@ -20,10 +20,6 @@ export class VideoComponent extends BaseComponent<HTMLElement> {
       </section>
     `
     );
-    // https://youtu.be/Gasgvx3GQ-E
-    // https://www.youtube.com/watch?v=Gasgvx3GQ-E
-    // https://www.youtube.com/embed/Gasgvx3GQ-E
-    // => https://www.youtube.com/embed/Gasgvx3GQ-E
     const iframeElement = this.element.querySelector(".video__content") as HTMLIFrameElement;
     iframeElement.src = this.converToEmbedURL(url);
     const titleElement = this.element.querySelector(".video__title") as HTMLVideoElement;
@@ -34,5 +30,6 @@ export class VideoComponent extends BaseComponent<HTMLElement> {
     const match = url.match(regExp);
     const videoId = match ? match[1] || match[2] : undefined;
     if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+    else return videoId;
   }
 }
