@@ -5,37 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notion copy</title>
-    <script defer type="module" src="./out/index.js"></script>
+    <script defer type="module" src="./out/app.js"></script>
     <script defer type="module" src="./out/loading/loading.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <nav id="nav" class="width-full position-fixed top-0 d-flex flex-column flex-justify-center flex-items-center">
-      <h1>Card Drag & Drop</h1>
-      <ul class="d-flex">
-        <li>
-          <button class="mr-2">Image</button>
-        </li>
-        <li>
-          <button class="mr-2">Video</button>
-        </li>
-        <li>
-          <button class="mr-2">Note</button>
-        </li>
-        <li>
-          <button>Task</button>
-        </li>
-      </ul>
-    </nav>
-    <section id="cards">d</section>
-    <footer id="footer" class="width-full position-fixed bottom-0 d-flex flex-justify-center flex-items-center">
-      <h3>
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        &copy; Copyright by Yongrak Choi. All right reserved
-      </h3>
-    </footer>
+    <div id="app" class="d-flex flex-column flex-items-center">
+      <header id="header" class="width-full position-fixed top-0 d-flex flex-column flex-justify-center flex-items-center">
+        <h1>Card Drag & Drop</h1>
+        <ul class="d-flex">
+          <li>
+            <button class="mr-2">Image</button>
+          </li>
+          <li>
+            <button class="mr-2">Video</button>
+          </li>
+          <li>
+            <button class="mr-2">Note</button>
+          </li>
+          <li>
+            <button>Task</button>
+          </li>
+        </ul>
+      </header>
+      <main class="document"></main>
+      <footer id="footer" class="width-full position-fixed bottom-0 d-flex flex-justify-center flex-items-center">
+        <h3>
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          &copy; Copyright by Yongrak Choi. All right reserved
+        </h3>
+      </footer>
+    </div>
   </body>
 </html>

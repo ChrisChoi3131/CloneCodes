@@ -39,6 +39,7 @@ ol {
 button {
   font-family: var(--font-family);
   background-color: transparent;
+  user-select: none;
   cursor: pointer;
   border: none;
   outline: none;
