@@ -1,6 +1,7 @@
-export class ImageComponent {
-  private element: HTMLElement;
+import { BaseComponent } from "./../../common/base.js";
+export class ImageComponent extends BaseComponent {
   constructor(title: string, url: string) {
+    super();
     const template = document.createElement("template");
     template.innerHTML = `
       <section class="image">
@@ -16,8 +17,5 @@ export class ImageComponent {
     imageElement.alt = title;
     const titleElement = this.element.querySelector(".image__title")! as HTMLParagraphElement;
     titleElement.textContent = title;
-  }
-  attachTo(parent: HTMLElement, position: InsertPosition = "afterbegin") {
-    parent.insertAdjacentElement(position, this.element);
   }
 }
