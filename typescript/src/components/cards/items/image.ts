@@ -1,17 +1,14 @@
-import { BaseComponent } from "./../../common/base.js";
-export class ImageComponent extends BaseComponent {
+import { BaseComponent } from "../../common/conponents.js";
+export class ImageComponent extends BaseComponent<HTMLElement> {
   constructor(title: string, url: string) {
-    super();
-    const template = document.createElement("template");
-    template.innerHTML = `
+    super(`
       <section class="image">
         <div class="image__holder">
           <image class="image__thumbnail"></image>
         </div>
         <p class="image__title"></p>
       </section>
-      `;
-    this.element = template.content.firstElementChild as HTMLElement;
+      `);
     const imageElement = this.element.querySelector(".image__thumbnail")! as HTMLImageElement;
     imageElement.src = url;
     imageElement.alt = title;

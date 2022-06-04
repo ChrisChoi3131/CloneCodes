@@ -1,9 +1,6 @@
-import { BaseComponent } from "./../common/base.js";
-export class CardsComponent extends BaseComponent {
+import { BaseComponent } from "../common/conponents.js";
+export class CardsComponent extends BaseComponent<HTMLUListElement> {
   constructor() {
-    super();
-    this.element = document.createElement("ul");
-    this.element.setAttribute("class", "page");
-    this.element.textContent = "CardsComponent";
+    super('<ul class="page">Cards Component</ul>');
   }
 }
