@@ -1,5 +1,5 @@
 #cards {
   min-height: 100vh;
-  width: 100%;
+  min-width: 1280px;
   padding-top: 200px;
 }
