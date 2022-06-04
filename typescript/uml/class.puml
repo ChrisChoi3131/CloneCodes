@@ -1,0 +1,5 @@
+@startuml 1
+App <|-- Main
+' App <|-- Header
+' App <|-- Footer
+@enduml
