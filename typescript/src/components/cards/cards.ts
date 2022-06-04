@@ -1,9 +1,9 @@
-export class PageComponent {
+export class CardsComponent {
   private element: HTMLUListElement;
   constructor() {
     this.element = document.createElement("ul");
     this.element.setAttribute("class", "page");
-    this.element.textContent = "PageComponent";
+    this.element.textContent = "CardsComponent";
   }
   attachTo(parent: HTMLElement, position: InsertPosition = "afterbegin") {
     parent.insertAdjacentElement(position, this.element);

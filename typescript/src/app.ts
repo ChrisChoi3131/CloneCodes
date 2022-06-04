@@ -1,13 +1,9 @@
-import { PageComponent } from "./components/page.js";
-import { ImageComponent } from "./components/items/image.js";
-
+import { Main } from "./components/layouts/main.js";
 class App {
-  private readonly page: PageComponent;
+  private readonly main: Main;
   constructor(appRoot: HTMLElement) {
-    this.page = new PageComponent();
-    this.page.attachTo(appRoot);
-    const image = new ImageComponent("test image", "https://picsum.photos/600/300");
-    image.attachTo(appRoot, "beforeend");
+    this.main = new Main();
+    this.main.attachTo(appRoot, "beforeend");
   }
 }
-new App(document.querySelector(".document")! as HTMLElement);
+new App(document.querySelector("#app")! as HTMLElement);
