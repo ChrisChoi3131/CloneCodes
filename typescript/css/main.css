@@ -7,3 +7,7 @@
 @import url(contents/header.css);
 @import url(contents/document.css);
 @import url(contents/footer.css);
+
+.close {
+  cursor: pointer;
+}
