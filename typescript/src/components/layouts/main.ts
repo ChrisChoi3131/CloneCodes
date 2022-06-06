@@ -1,7 +1,7 @@
 import { NoteComponent } from "../cards/items/note.js";
 import { TodoComponent } from "../cards/items/todo.js";
 import { VideoComponent } from "../cards/items/video.js";
-import { CardsComponent } from "./../cards/cards.js";
+import { CardsComponent, CardItemComponent } from "./../cards/cards.js";
 import { ImageComponent } from "./../cards/items/image.js";
 
 export class Main {
@@ -9,7 +9,7 @@ export class Main {
   private readonly main: HTMLElement;
   constructor() {
     this.main = document.querySelector(".document")!;
-    this.cards = new CardsComponent();
+    this.cards = new CardsComponent(CardItemComponent);
     this.cards.attachTo(this.main);
     const image = new ImageComponent("TEST Image", "https://picsum.photos/600/300");
     // const image1 = new ImageComponent("TEST Image", "https://picsum.photos/600/300");

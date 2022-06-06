@@ -1,26 +1,31 @@
-import { time } from "console";
 import { BaseComponent, Component } from "../common/conponents.js";
 
+type OnCloseListener = () => void;
+type SectionContainerConstructor = {
+  new (): SectionContainer;
+};
 export interface Composable {
   addChild(child: Component): void;
 }
-type OnCloseListener = () => void;
+interface SectionContainer extends Component, Composable {
+  setOnCloseListener(listener: OnCloseListener): void;
+}
 export class CardsComponent extends BaseComponent<HTMLElement> implements Composable {
-  constructor() {
+  constructor(private cardItemConstructor: SectionContainerConstructor) {
     super('<ul class="cards"></ul>');
   }
   addChild(section: Component) {
-    const item = new CardItemComponent();
+    const item = new this.cardItemConstructor();
     item.addChild(section);
     item.attachTo(this.element, "beforeend");
-    item.setCloseEventListener(() => {
+    item.setOnCloseListener(() => {
       item.removeFrom(this.element);
     });
   }
 }
 
-class CardItemComponent extends BaseComponent<HTMLElement> implements Composable {
-  private closeEventlistener: OnCloseListener;
+export class CardItemComponent extends BaseComponent<HTMLElement> implements SectionContainer {
+  private closeEventlistener?: OnCloseListener;
   constructor() {
     super(
       `
@@ -42,7 +47,7 @@ class CardItemComponent extends BaseComponent<HTMLElement> implements Composable
     const container = this.element.querySelector(".card-item__body")! as HTMLElement;
     child.attachTo(container);
   }
-  setCloseEventListener(listener: OnCloseListener) {
+  setOnCloseListener(listener: OnCloseListener) {
     this.closeEventlistener = listener;
   }
 }
