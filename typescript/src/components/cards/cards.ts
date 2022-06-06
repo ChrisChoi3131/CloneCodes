@@ -1,3 +1,4 @@
+import { time } from "console";
 import { BaseComponent, Component } from "../common/conponents.js";
 
 export interface Composable {
@@ -12,14 +13,14 @@ export class CardsComponent extends BaseComponent<HTMLElement> implements Compos
     const item = new CardItemComponent();
     item.addChild(section);
     item.attachTo(this.element, "beforeend");
-    item.setOnCloseListener(() => {
+    item.setCloseEventListener(() => {
       item.removeFrom(this.element);
     });
   }
 }
 
 class CardItemComponent extends BaseComponent<HTMLElement> implements Composable {
-  private closeListener?: OnCloseListener;
+  private closeEventlistener: OnCloseListener;
   constructor() {
     super(
       `
@@ -32,17 +33,16 @@ class CardItemComponent extends BaseComponent<HTMLElement> implements Composable
       </li>
       `
     );
-    const li = this.element;
-    li.addEventListener("click", (e) => {
-      const element = e.target as HTMLElement;
-      if (element.tagName === "BUTTON" && element.className === "close") li.remove();
-    });
+    const closeBtn = this.element.querySelector(".close")! as HTMLButtonElement;
+    closeBtn.onclick = () => {
+      this.closeEventlistener && this.closeEventlistener();
+    };
   }
   addChild(child: Component) {
     const container = this.element.querySelector(".card-item__body")! as HTMLElement;
     child.attachTo(container);
   }
-  setOnCloseListener(listener: OnCloseListener) {
-    this.closeListener = listener;
+  setCloseEventListener(listener: OnCloseListener) {
+    this.closeEventlistener = listener;
   }
 }
