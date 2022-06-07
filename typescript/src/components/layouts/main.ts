@@ -1,20 +1,23 @@
 import { NoteComponent } from "../cards/items/note.js";
 import { TodoComponent } from "../cards/items/todo.js";
 import { VideoComponent } from "../cards/items/video.js";
+import { BaseComponent } from "../common/conponents.js";
 import { CardsComponent, CardItemComponent } from "./../cards/cards.js";
 import { ImageComponent } from "./../cards/items/image.js";
 
-export class Main {
+export class Main extends BaseComponent<HTMLElement> {
   private readonly cards: CardsComponent;
   private readonly main: HTMLElement;
   constructor() {
-    this.main = document.querySelector(".document")!;
+    super(
+      `
+        <main class="document"></main>
+      `
+    );
     this.cards = new CardsComponent(CardItemComponent);
-    this.cards.attachTo(this.main);
+    this.cards.attachTo(this.element);
     const image = new ImageComponent("TEST Image", "https://picsum.photos/600/300");
-    // const image1 = new ImageComponent("TEST Image", "https://picsum.photos/600/300");
     this.cards.addChild(image);
-    // this.cards.addChild(image);
     // this.cards.addChild(image);
     // image.attachTo(this.main, "beforeend");
     // const note = new NoteComponent(
@@ -26,8 +29,5 @@ export class Main {
     // todo.attachTo(this.main);
     // const video = new VideoComponent("video title!!!", "https://www.youtube.com/embed/GWdm1Ln9KRs");
     // video.attachTo(this.main);
-  }
-  attachTo(parent: HTMLElement, position: InsertPosition = "afterbegin") {
-    parent.insertAdjacentElement(position, this.main);
   }
 }
