@@ -6,7 +6,7 @@ class App {
   private readonly main: Main;
   private readonly footer: Footer;
   constructor(appRoot: HTMLElement) {
-    this.header = new Header();
+    this.header = new Header("Card Drag & Drop");
     this.main = new Main();
     this.footer = new Footer();
     this.header.attachTo(appRoot, "beforeend");
