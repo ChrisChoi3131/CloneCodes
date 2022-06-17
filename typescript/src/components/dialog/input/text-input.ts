@@ -1,8 +1,9 @@
 import { BaseComponent } from "../../common/conponents.js";
-export class textInput extends BaseComponent<HTMLElement> {
+export class TextInput extends BaseComponent<HTMLElement> {
   constructor() {
     super(
       `
+      <div>
         <div>
           <label for="title">Title</label>
           <input type="text" id="title" />
@@ -11,6 +12,7 @@ export class textInput extends BaseComponent<HTMLElement> {
           <label for="url">Text</label>
           <input type="text" id="text" />
         </div>    
+      </div>
       `
     );
   }

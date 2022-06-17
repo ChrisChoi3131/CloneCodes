@@ -29,7 +29,7 @@ export class CardItemComponent extends BaseComponent<HTMLElement> implements Sec
   constructor() {
     super(
       `
-      <li class="card-item">
+      <li draggable="true" class="card-item">
         <div class="card-item__body">
           <div class="card-item__controls">
             <button class="close">&times;</button>

@@ -11,3 +11,25 @@
 .close {
   cursor: pointer;
 }
+
+.card-item {
+  margin: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 6px var(--shadow-color);
+  background: var(--bg-accent-color);
+  background: var(--component-bg-gradient);
+}
+
+.card-item__controls {
+  padding-right: 0.5em;
+}
+
+.card-item__title {
+  color: var(--text-accent-color);
+}
+
+.card-item__body {
+  width: 100%;
+}
