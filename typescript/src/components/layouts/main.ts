@@ -4,6 +4,7 @@ import { VideoComponent } from "../cards/items/video.js";
 import { BaseComponent } from "../common/conponents.js";
 import { CardsComponent, CardItemComponent } from "./../cards/cards.js";
 import { ImageComponent } from "./../cards/items/image.js";
+import { event } from "../common/eventEmitter.js";
 
 export class Main extends BaseComponent<HTMLElement> {
   private readonly cards: CardsComponent;
@@ -16,9 +17,11 @@ export class Main extends BaseComponent<HTMLElement> {
     );
     this.cards = new CardsComponent(CardItemComponent);
     this.cards.attachTo(this.element);
-    const image = new ImageComponent("TEST Image", "https://picsum.photos/600/300");
-    this.cards.addChild(image);
-    // this.cards.addChild(image);
+    event.subscribe("makeImageCard", (title, url) => {
+      const image = new ImageComponent(title, url);
+      this.cards.addChild(image);
+    });
+    //"https://picsum.photos/600/300"
     // image.attachTo(this.main, "beforeend");
     // const note = new NoteComponent(
     //   "title~~",

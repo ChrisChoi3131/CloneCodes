@@ -1,5 +1,7 @@
 import { BaseComponent } from "../common/conponents.js";
+import { event } from "../common/eventEmitter.js";
 import { InputDialog } from "../dialog/dialog.js";
+import { MediaInput } from "../dialog/input/media-input.js";
 
 export class Header extends BaseComponent<HTMLElement> {
   constructor(title: string) {
@@ -27,10 +29,13 @@ export class Header extends BaseComponent<HTMLElement> {
     const imgBtn = this.element.querySelector("#new-image")! as HTMLElement;
     imgBtn.addEventListener("click", () => {
       const dialog = new InputDialog();
+      const mediaInput = new MediaInput();
+      dialog.addChild(mediaInput);
       dialog.setOnCloseListener(() => {
         dialog.removeFrom(this.element);
       });
       dialog.setOnSubmitListener(() => {
+        event.emit("makeImageCard", mediaInput.title, mediaInput.url);
         dialog.removeFrom(this.element);
       });
       dialog.attachTo(this.element);
