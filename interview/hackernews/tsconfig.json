@@ -1,19 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
     "strict": true,
-    "esModuleInterop": true,
-    "alwaysStrict": true,
+    "module": "CommonJS",
     "sourceMap": true,
-    "noImplicitAny": true,
-    "downlevelIteration": true,
-    "noErrorTruncation": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "$schema": "https://json.schemastore.org/tsconfig",
-  //to
-  "include": ["src/**/*"],
-  "display": "Recommended"
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  } 
 }
