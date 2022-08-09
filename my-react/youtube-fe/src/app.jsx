@@ -1,17 +1,21 @@
-import { useEffect, useState } from "react";
-import "./app.css"
+import React, { useState, useEffect } from 'react';
+import './app.css'
+import { API_KEY } from './config'
 
 function App() {
   const [videos, setVideos] = useState([])
   useEffect(() => {
     const requestOptions = {
-      method: "GET",
-      redirect: "follow"
+      method: 'GET',
+      redirect: 'follow'
     };
-    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxresult=25&key=AIzaSyDbNZ55SmXb8aNX4iSRMwEZPOf2_gu6NGw", requestOptions)
+    fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=${API_KEY}`, requestOptions)
       .then(response => response.json())
-      .then(result => setVideos(result.items))
-      .catch(error => console.log("error", error));
+      .then(result => {
+        setVideos(result.items)
+        console.log(videos);
+      })
+      .catch(error => console.log('error', error));
   })
   return <div></div>
 }

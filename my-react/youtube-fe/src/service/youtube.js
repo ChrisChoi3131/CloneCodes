@@ -1,11 +1,11 @@
 export function fectchPopularList() {
   const requestOptions = {
-    method: "GET",
-    redirect: "follow"
+    method: 'GET',
+    redirect: 'follow'
   };
-  fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&key=AIzaSyDbNZ55SmXb8aNX4iSRMwEZPOf2_gu6NGw", requestOptions)
+  fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxWidth=25&key=', requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
-    .catch(error => console.log("error", error));
+    .catch(error => console.log('error', error));
 }
 
