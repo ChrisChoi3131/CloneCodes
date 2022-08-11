@@ -4,7 +4,6 @@ class Account {
     this._type = type;
     this._interestRate = interestRate;
   }
-
   get interestRate() {
     return this._interestRate;
   }
