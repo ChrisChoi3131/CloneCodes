@@ -1,15 +1,15 @@
 class Order {
   #quantity;
   #item;
+  #basePrice;
+  #discountFactor
   constructor(quantity, item) {
     this.#quantity = quantity;
     this.#item = item;
+    this.#basePrice = this.#quantity * this.#item.price;
+    this.#discountFactor = basePrice > 1000 ? 0.95 : 0.98
   }
-
   get price() {
-    const basePrice = this.#quantity * this.#item.price;
-    const discountFactor = 0.98;
-    if (basePrice > 1000) discountFactor -= 0.03;
-    return basePrice * discountFactor;
+    return this.#basePrice * this.#discountFactor;
   }
 }

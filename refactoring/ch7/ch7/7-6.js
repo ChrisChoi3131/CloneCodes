@@ -6,9 +6,6 @@ export class Shipment {
     this.#shippingCompany = shippingCompany;
   }
 
-  get trackingInfo() {
-    return this.display;
-  }
   get shippingCompany() {
     return this.#shippingCompany;
   }
@@ -16,18 +13,22 @@ export class Shipment {
   set shippingCompany(arg) {
     this.#shippingCompany = arg;
   }
+
   get trackingNumber() {
     return this.#trackingNumber;
   }
+
   set trackingNumber(arg) {
     this.#trackingNumber = arg;
   }
-  get display() {
-    return `${this.#shippingCompany}: ${this.#trackingNumber}`;
+
+  get trackingInfo() {
+    return `${this.shippingCompany}: ${this.trackingNumber}`;
   }
 }
 
 const shipment = new Shipment(999, 'Maersk');
 console.log(shipment.trackingInfo);
+
 shipment.shippingCompany = 'COSCO';
 console.log(shipment.trackingInfo);

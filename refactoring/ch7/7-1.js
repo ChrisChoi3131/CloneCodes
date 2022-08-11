@@ -1,5 +1,18 @@
-const organization = { name: 'Acme Gooseberries', country: 'GB' };
+export class Organization {
+  #name
+  #country
+  constructor(name, country) {
+    this.#name = name
+    this.#country = country
+  }
+  get name() {
+    return this.#name
+  }
+  set name(name) {
+    this.#name = name
+  }
+  get country() {
+    return this.#country
+  }
+}
 
-organization.name = 'Dream Coding';
-console.log(organization.name);
-console.log(organization.country);
