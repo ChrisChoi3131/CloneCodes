@@ -9,18 +9,21 @@ class Person {
   get name() {
     return this.#name;
   }
+
   set name(arg) {
     this.#name = arg;
   }
+
   get telephoneNumber() {
-    return this.#telephoneNumber.toString;
+    return this.#telephoneNumber;
   }
+
   get officeAreaCode() {
     return this.#telephoneNumber.areaCode;
   }
 
   set officeAreaCode(value) {
-    this.#telephoneNumber = new TelephoneNumber(value, this.#telephoneNumber);
+    this.#telephoneNumber = new TelephoneNumber(value, this.officeNumber);
   }
 
   get officeNumber() {
@@ -28,7 +31,10 @@ class Person {
   }
 
   set officeNumber(value) {
-    this.#telephoneNumber = new TelephoneNumber(this.#name, value);
+    this.#telephoneNumber.number = new TelephoneNumber(
+      this.officeAreaCode,
+      value
+    );
   }
 }
 
@@ -43,6 +49,7 @@ class TelephoneNumber {
   get areaCode() {
     return this.#areaCode;
   }
+
   get number() {
     return this.#number;
   }

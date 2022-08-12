@@ -1,19 +1,24 @@
 class Organization {
+  #name;
+  #country;
   constructor(data) {
-    this._name = data.name;
-    this._country = data.country;
+    this.#name = data.name;
+    this.#country = data.country;
   }
   get name() {
-    return this._name;
+    return this.#name;
   }
   set name(value) {
-    this._name = value;
+    this.#name = value;
   }
   get country() {
-    return this._country;
+    return this.#country;
   }
+
+
+
   set country(value) {
-    this._country = value;
+    this.#country = value;
   }
 }
 const organization = new Organization({
