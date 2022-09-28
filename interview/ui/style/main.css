@@ -1,3 +1,28 @@
-@charset "UTF-8";
-@import url("./component/variables.css");
-@import url("./component/global.css");
+body {
+  box-sizing: border-box;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style-type: none;
+  width: 100%;
+}
+input {
+  width: 95%;
+}
+.searchBox {
+  width: 200px;
+  padding: 0;
+  margin: 0;
+}
+.searchInput:focus {
+  background-color: rgb(173, 230, 191);
+}
+.recommendList {
+  display: none;
+  min-height: 100px;
+  background-color: bisque;
+  border-color: black;
+}

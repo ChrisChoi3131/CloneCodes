@@ -8,8 +8,5 @@ export function acquireData(input) {
       const [, country,] = line
       return country.trim() === 'India'
     })
-    .map(line => {
-      const [city, , phone] = line
-      return { city, phone }
-    })
+    .map(([city, , phone]) => { city, phone })
 }

@@ -6,3 +6,18 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+ul {
+  list-style-type: none;
+}
+li {
+  display: list-item;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  display: block;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}

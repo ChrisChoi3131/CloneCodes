@@ -6,7 +6,6 @@ export function rating(voyage, history) {
   if (vpf * 3 > vr + chr * 2) return 'A';
   else return 'B';
 }
-
 function voyageRisk(voyage) {
   // 항해 경로 위험요소
   let result = 1;
@@ -15,7 +14,6 @@ function voyageRisk(voyage) {
   if (['china', 'east-indies'].includes(voyage.zone)) result += 4;
   return Math.max(result, 0);
 }
-
 function captainHistoryRisk(voyage, history) {
   // 선장의 항해 이력 위험 요소
   let result = 1;
@@ -24,12 +22,9 @@ function captainHistoryRisk(voyage, history) {
   if (voyage.zone === 'china' && hasChina(history)) result -= 2;
   return Math.max(result, 0);
 }
-
 function hasChina(history) {
-  // 중국을 경유하는가?
   return history.some((v) => 'china' === v.zone);
 }
-
 function voyageProfitFactor(voyage, history) {
   // 수익 요인
   let result = 2;
@@ -46,7 +41,6 @@ function voyageProfitFactor(voyage, history) {
   }
   return result;
 }
-
 const voyage = { zone: 'west-indies', length: 10 };
 const history = [
   { zone: 'east-indies', profit: 5 },
@@ -54,6 +48,5 @@ const history = [
   { zone: 'china', profit: -2 },
   { zone: 'west-africa', profit: 7 },
 ];
-
 const rate = rating(voyage, history);
 console.log(rate);
