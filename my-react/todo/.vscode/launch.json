@@ -9,10 +9,7 @@
       "request": "launch",
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/src",
-      "sourceMapPathOverrides": {
-        "webpack:///src/*": "${webRoot}/*"
-      },
+      "webRoot": "${workspaceFolder}",
       "runtimeArgs": ["--profile-directory=workspace/CYR_HOME/.vscode/vscode-chrome-debug-userdatadir"]
     }
   ]

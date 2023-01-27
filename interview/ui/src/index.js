@@ -1,32 +1,30 @@
-const searchInput = document.querySelector(".searchInput")
-const recommendList = document.querySelector(".recommendList")
-const dataRecommendLists = ["123", "123131232131", "dfdafadf"]
-
-
-searchInput.addEventListener("focusin", (e) => {
-  recommendList.style.display = "block"
-})
-searchInput.addEventListener("focusout", (e) => {
-  recommendList.style.display = "none"
-})
-
-searchInput.addEventListener("keydown", (e) => {
-  const result = []
-  dataRecommendLists.forEach(list => {
-    if (list.indexOf(searchInput.value) !== -1) {
-      result.push(list)
-    }
-  })
-  initSearchBox(result)
-})
-initSearchBox(dataRecommendLists);
-function initSearchBox(dataRecommendLists) {
-  recommendList.innerHTML = ""
-  dataRecommendLists.forEach(dataList => {
-    const li = document.createElement("li")
-    li.innerText = dataList
-    recommendList.appendChild(li)
-  })
+function modifyTableCell(rowIndex, columnIndex, newText) {
+  const table = document.getElementById("table")
+  const cellElement = table.tBodies[0].rows[`${rowIndex}`].cells[`${columnIndex}`]
+  const originalCellValue = cellElement.innerHTML;
+  cellElement.innerHTML = newText
+  return originalCellValue
 }
 
+document.body.innerHTML = `
+<table id = "table">
+    <tbody>
+        <tr>
+            <td>Isla</td>
+            <td>Leo</td>
+            <td>Samuel</td>
+        </tr>
+        <tr>
+            <td>Mia</td>
+            <td>Evie</td>
+            <td>Freya</td>
+        </tr>
+        <tr>
+            <td>Olivia</td>
+            <td>Ava</td>
+            <td>George</td>
+        </tr>
+    </tbody>
+</table>`;
 
+console.log(modifyTableCell(0, 1, "Joe"));

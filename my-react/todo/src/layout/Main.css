@@ -1,0 +1,14 @@
+.Main{
+  width: 500px;
+  height: 500px;
+  background-color: white;
+}
+li.todo{
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 10px 10px 10px 10px;
+}
+li.todo> input:checked + label{
+  text-decoration: line-through;
+}
