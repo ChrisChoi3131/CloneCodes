@@ -7,12 +7,22 @@ import React, { useState,useEffect } from 'react';
 
 
 export default function Todo(props) {
-  
   const savedTodos =loadTodoFromLS()
-  const [todos, setTodos] = useState(savedTodos)
+  const [todos, setTodos] = useState(savedTodos);
+  const [filteredTodos, setFilteredTodos] = useState(savedTodos)
+  const [selectedIdx, setSelectedIdx] = useState(1);
+  function updateTodos(todos){
+    setTodos(todos)
+    renderTodos(selectedIdx)
+  }
   useEffect(()=>{
-    saveToLS()          
+    saveToLS()
+    renderTodos(selectedIdx)  
   });
+  function onTabChange(selectedIdx){
+    setSelectedIdx(selectedIdx)
+    renderTodos(selectedIdx)
+  }
   function onFooterStateHandler(todoText){
     addItemToTodoList(todoText)
   }
@@ -24,13 +34,13 @@ export default function Todo(props) {
         return todo
       }
     })
-    setTodos(updatedTodos)
+    updateTodos(updatedTodos)
   }
   function onClickDeleteBtnHandler(todoId){
-    setTodos(todos.filter(todo=> todo.id !== todoId))
+    updateTodos(todos.filter(todo=> todo.id !== todoId))
   }
   function addItemToTodoList(todoText){
-    setTodos([...todos, {id: Math.floor(Math.random()*100_000_000), text : todoText, isDone : false}])
+    updateTodos([...todos, {id: Math.floor(Math.random()*100_000_000), text : todoText, isDone : false}])
   }
   function saveToLS(){
     localStorage.setItem("todos", JSON.stringify(todos))
@@ -39,9 +49,22 @@ export default function Todo(props) {
     const todos = JSON.parse(localStorage.getItem("todos"))
     return todos === null ? [] : todos
   }
+  function renderTodos(selectedIdx){
+    let renderedTodos =[]
+    if(selectedIdx===1){
+      renderedTodos= todos
+    }
+    if(selectedIdx===2){
+      renderedTodos = todos.filter(todo=> todo.isDone===false)
+    }
+    if(selectedIdx===3){
+      renderedTodos = todos.filter(todo=> todo.isDone===true)
+    }
+    setFilteredTodos(renderedTodos)
+  }
   return <div className='app'>
-    <Header/>
-    <Main onClickCheckbox={onClickCheckboxHandler} onClickDeletebtn={onClickDeleteBtnHandler} todos={todos} />
+    <Header selectedIdx={selectedIdx} onTabChange={onTabChange}/>
+    <Main onClickCheckbox={onClickCheckboxHandler} onClickDeletebtn={onClickDeleteBtnHandler} todos={filteredTodos} />
     <Footer onTextSubmit={onFooterStateHandler}/>
   </div>
 }
