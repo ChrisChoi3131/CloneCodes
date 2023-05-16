@@ -1,0 +1,6 @@
+.todo {
+  border: solid 1px lightgray;
+  min-height: 500px;
+  min-width: 300px;
+  border-radius: 10px;
+}

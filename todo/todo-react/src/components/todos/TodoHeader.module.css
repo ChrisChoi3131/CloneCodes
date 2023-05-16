@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab {
+  display: flex;
+}
+.tab > li {
+  margin-right: 10px;
+}
