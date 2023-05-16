@@ -1,9 +1,0 @@
-extends base.pug
-
-block content 
-  p #{video.description}.
-  small Posted #{video.createdAt}.
-  h3 #{video.meta.views} #{(video.meta.views === 1 ||video.meta.views === 0) ? "view" : "views"}
-  a(href=`${video.id}/edit`) Edit Video &rarr;
-  br
-  a(href=`${video.id}/delete`) delete Video &rarr;
