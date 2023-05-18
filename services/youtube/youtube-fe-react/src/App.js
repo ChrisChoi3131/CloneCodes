@@ -1,19 +1,15 @@
-
 import {
-  createBrowserRouter,
-  RouterProvider,
+  Outlet,
 } from "react-router-dom";
+import SearchBar from './components/searchbars/Searchbar';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-]);
+
 function App() {
   return (
-    <RouterProvider router={router} />
+    <>
+      <SearchBar></SearchBar>
+      <Outlet />
+    </>
   );
 }
-
 export default App;
