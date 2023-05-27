@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 
 export default function SearchResults() {
-  let { v: videoId } = useParams();
+  let { videoId } = useParams();
   return (
     <>
-      {videoId}
+      {videoId ? videoId : 'Hot~~🔥'}
     </>
   )
 }
