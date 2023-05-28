@@ -6,11 +6,12 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 export default function SearchBar({ }) {
   let { videoId } = useParams();
   const [text, setText] = useState('');
-
   const navigate = useNavigate();
+
   useEffect(() => {
     setText(videoId || '');
   }, [videoId]);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (!text) return;
@@ -18,14 +19,15 @@ export default function SearchBar({ }) {
   }
 
   return (
-    <header className='flex items-center w-full h-14'>
-      <Link to='/'>
-        <BsYoutube className='' />YouTube
+    <header className='flex items-center w-full p-4 text-2xl h-14'>
+      <Link className='flex items-center' to='/'>
+        <BsYoutube className='text-3xl text-youtubeRed' />
+        <h1 className='font-bold '>YouTube</h1>
       </Link>
-      <form onSubmit={handleSubmit}>
-        <input onChange={(e) => setText(e.target.value)} value={text} type='search' placeholder='Search' />
+      <form className='w-full flex justify-center' onSubmit={handleSubmit}>
+        <input className='p-2 outline-none bg-black' onChange={(e) => setText(e.target.value)} value={text} type='search' placeholder='Search' />
         <button ><BsSearch></BsSearch></button>
       </form>
-    </header>
+    </header >
   )
 }
