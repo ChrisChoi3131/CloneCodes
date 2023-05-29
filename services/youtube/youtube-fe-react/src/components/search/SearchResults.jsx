@@ -1,16 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { useYoutubeApi } from '../../contexts/YoutubeApiContext'
 export default function SearchResults() {
-  let { videoId } = useParams();
+  let { keyword } = useParams();
+  const youtubeApi = useYoutubeApi();
   const [videos, setVideos] = useState([]);
   useEffect(() => {
+    //todo Replace this logic to  React Query
     async function fetchSearch() {
       setVideos([]);
-      const searchResponse = await fetch(`/videos/${videoId ? 'search' : 'popular'}.json`);
-      if (searchResponse.ok && !ignore) {
-        const { items } = await searchResponse.json();
-        setVideos(items);
+      try {
+        const { data } = await youtubeApi.search(keyword);
+        console.log(data);
+        if (!ignore) {
+          const { items } = data
+          setVideos(items);
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
     let ignore = false;
@@ -18,7 +25,7 @@ export default function SearchResults() {
     return () => {
       ignore = true;
     }
-  }, [videoId]);
+  }, [keyword]);
   return (
     <>
       {videos.map(({ snippet }) => {

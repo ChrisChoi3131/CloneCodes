@@ -4,13 +4,13 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 
 
 export default function SearchBar({ }) {
-  let { videoId } = useParams();
+  let { keyword } = useParams();
   const [text, setText] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    setText(videoId || '');
-  }, [videoId]);
+    setText(keyword || '');
+  }, [keyword]);
 
   function handleSubmit(e) {
     e.preventDefault();
