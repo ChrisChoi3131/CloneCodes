@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       index: true,
       element: <SearchResults />
     }, {
-      path: "search/:videoId",
+      path: "search/:keyword",
       element: <SearchResults />
     }, {
       path: "watch",
