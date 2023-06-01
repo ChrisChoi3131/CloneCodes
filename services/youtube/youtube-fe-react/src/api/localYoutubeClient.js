@@ -6,4 +6,7 @@ export default class LocalYoutubeClient {
   async mostPopular() {
     return axios.get('/videos/popular.json');
   }
+  async relatedVideo() {
+    return axios.get('/videos/related.json');
+  }
 }

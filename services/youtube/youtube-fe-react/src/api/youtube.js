@@ -25,4 +25,13 @@ export default class Youtube {
       }
     })
   }
+  async relatedVideo(videoId) {
+    return this.apiClient.relatedVideo({
+      params: {
+        part: 'snippet',
+        relatedToVideoId: videoId,
+        maxResult: 25,
+      }
+    });
+  }
 }
