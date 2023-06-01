@@ -25,13 +25,29 @@ export default class Youtube {
       }
     })
   }
-  async relatedVideo(videoId) {
-    return this.apiClient.relatedVideo({
+  async relatedVideos(videoId) {
+    return this.apiClient.relatedVideos({
       params: {
         part: 'snippet',
         relatedToVideoId: videoId,
         maxResult: 25,
       }
     });
+  }
+  async channelInfo(channelId) {
+    return this.apiClient.channelInfo({
+      params: {
+        part: 'snippet',
+        id: channelId
+      }
+    });
+  }
+  async channelImgUrl(channelId) {
+    return this.apiClient.channelInfo({
+      params: {
+        part: 'snippet',
+        id: channelId
+      }
+    }).then((res) => res.data.items[0].snippet.thumbnails.default);
   }
 }

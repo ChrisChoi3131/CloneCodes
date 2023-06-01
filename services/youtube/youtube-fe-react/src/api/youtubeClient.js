@@ -14,7 +14,10 @@ export default class YoutubeClient {
   async mostPopular(params) {
     return this.httpClient.get('videos', params);
   }
-  async relatedVideo(params) {
+  async relatedVideos(params) {
     return this.search(params);
+  }
+  async channelInfo(params) {
+    return this.httpClient.get('channels', params);
   }
 }

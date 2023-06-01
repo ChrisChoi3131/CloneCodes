@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useYoutubeApi } from '../../contexts/YoutubeApiContext'
-import VideoCards from '../videos/VideoCards';
+import { useYoutubeApi } from '../contexts/YoutubeApiContext'
+import VideoCards from '../components/video/VideoCards';
 
 export default function SearchResults() {
   let { keyword } = useParams();

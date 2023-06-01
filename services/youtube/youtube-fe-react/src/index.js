@@ -8,8 +8,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import SearchResults from './components/search/SearchResults';
-import VideoDetail from './components/videos/VideoDetail'
+import SearchResults from './pages/SearchResults';
+import VideoDetail from './pages/VideoDetail'
 
 const router = createBrowserRouter([
   {
