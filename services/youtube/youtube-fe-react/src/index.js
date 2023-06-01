@@ -9,7 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import SearchResults from './components/search/SearchResults';
-import VideoDetail from './pages/VideoDetail'
+import VideoDetail from './components/videos/VideoDetail'
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       path: "search/:keyword",
       element: <SearchResults />
     }, {
-      path: "watch",
+      path: "watch/:videoId",
       element: <VideoDetail />
     }]
   },
