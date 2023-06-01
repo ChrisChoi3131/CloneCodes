@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useYoutubeApi } from '../../contexts/YoutubeApiContext'
 import VideoCards from '../videos/VideoCards';
@@ -25,7 +25,7 @@ export default function SearchResults() {
     return () => {
       ignore = true;
     }
-  }, [keyword]);
+  }, [keyword, youtubeApi]);
   return (
     <>
       {<VideoCards videos={videos} />}
