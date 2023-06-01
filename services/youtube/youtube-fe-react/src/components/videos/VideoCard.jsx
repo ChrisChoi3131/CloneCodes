@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { formatTimeAgo } from '../../util/date';
 export default function VideoCard({ video }) {
-  const { id: videoId, snippet } = video;
+  const { snippet } = video;
+  const videoId = typeof video.id === 'object' ? video.id.videoId : video.id;
   const { publishedAt, title, channelTitle, thumbnails } = snippet;
   const navigate = useNavigate();
   function handleClick() {
